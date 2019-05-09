@@ -1,0 +1,52 @@
+﻿@model Spor_Salonu.ViewModel.duyurularModel
+@{
+    ViewBag.Title = "DuyuruEkle";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<div id="content-wrapper">
+    <div class="container-fluid">
+        <!-- Page Content -->
+        <h1>Duyuru Ekle</h1>
+        <hr>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                        @using (Html.BeginForm("DuyuruEkle", "Admin", FormMethod.Post))
+                        {
+                            <!-- text input -->
+                            <div class="form-group">
+                                @Html.LabelFor(k => k.duyuru_adi)<br />
+                                @Html.TextBoxFor(k => k.duyuru_adi, new { @class = "form-control",autocomplete="off"})
+                                @Html.ValidationMessageFor(k => k.duyuru_adi, null, new { @class = "text-danger" })
+                                <!-- <input name="s=>s.duyuru_adi" type="text" class="form-control" required> -->
+                            </div>
+                            <!-- textarea -->
+                            <div class="form-group">
+                                @Html.LabelFor(k => k.duyuru_konu)<br />
+                                @Html.TextAreaFor(k => k.duyuru_konu, new { @class = "form-control",autocomplete="off" })
+                                @Html.ValidationMessageFor(k => k.duyuru_konu, null, new { @class = "text-danger" })
+                                <!-- <textarea name="s=>s.duyuru_adi" class="form-control" rows="3" required></textarea> -->
+                            </div>
+                            <div class="form-group">
+                                <input class="btn btn-primary" type="submit" value="Ekle">
+                            </div>
+                        }
+                    </div> 
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+    <!-- Sticky Footer -->
+    <footer class="sticky-footer">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright © FITT4FREE 2019</span>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+

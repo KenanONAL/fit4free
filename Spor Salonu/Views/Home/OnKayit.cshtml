@@ -1,0 +1,81 @@
+﻿@model Spor_Salonu.ViewModel.kayitModel
+@{
+    ViewBag.Title = "OnKayit";
+    Layout = "~/Views/Shared/_Site.cshtml";
+}
+
+<aside id="colorlib-hero">
+    <div class="flexslider">
+        <ul class="slides">
+            <li style="background-image: url(@Url.Content("~/content/")images/img_bg_2.jpg);">
+                <div class="overlay"></div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-md-offset slider-text">
+                            <div class="slider-text-inner text-center">
+                                <h1>Ön Kayıt</h1>
+                                <h2><span><a href="@Url.Action("Index","Home")">Anasayfa</a> | Ön Kayıt</span></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</aside>
+
+<div id="colorlib-contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 animate-box">
+                @if (TempData["sonuc"] != null)
+                {
+                    <div style="width:50%;margin:auto;position:relative;" class="alert alert-success">@TempData["sonuc"]</div>
+                }
+                <h2 style="width:50%;margin:auto;position:relative;margin-top:20px">Kayıt Bilgileri</h2>
+                @using (Html.BeginForm("OnKayit", "Home", FormMethod.Post, new { @style = "width:50%;margin:auto;position:relative;margin-top:20px;" }))
+                {
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <!-- <label for="fname">First Name</label> -->
+                            <input style="margin:auto;position:relative;" type="text" id="adsoyad" name="adsoyad" class="form-control" placeholder="Adınız Soyadınız" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <!-- <label for="email">Email</label> -->
+                            <input style="margin:auto;position:relative;" type="text" id="mail" name="mail" class="form-control" placeholder="E-Mail" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <!-- <label for="subject">Subject</label> -->
+                            <input style="margin:auto;position:relative;" type="text" id="telefon" name="telefon" class="form-control" placeholder="Telefon" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <!-- <label for="subject">Subject</label> -->
+                            <select name="uyelik_suresi" style="width:50%;margin:auto;position:relative;" class="custom-select dropdown-toggle btn" style="width:25%">
+                                <option value="1 Aylık">1 Aylık - 100₺ -</option>
+                                <option value="3 Aylık">3 Aylık - 270₺ -</option>
+                                <option value="6 Aylık">6 Aylık - 480₺ -</option>
+                                <option value="9 Aylık">9 Aylık - 630₺ -</option>
+                                <option value="12 Aylık">12 Aylık - 720₺ -</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin:auto;position:relative;">
+                        <input type="submit" value="Kayıt Ol" class="btn btn-primary">
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Spor_Salonu.Models.Duyurular>
+@{
+    ViewBag.Title = "duyurular";
+    Layout = "~/Views/Shared/_Site.cshtml";
+}
+@{String[][] aylar ={ new String[] { "","Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül" },
+                         new String[] { "Ekim","Kasım","Aralık" }}; }
+
+<aside id="colorlib-hero">
+    <div class="flexslider">
+        <ul class="slides">
+            <li style="background-image: url(@Url.Content("~/content/")images/img_bg_2.jpg);">
+                <div class="overlay"></div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-md-offset slider-text">
+                            <div class="slider-text-inner text-center">
+                                <h1>Duyurular</h1>
+                                <h2><span><a href="@Url.Action("Index","Home")">Anasayfa</a> | Duyurular</span></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</aside>
+
+
+<div class="colorlib-event">
+    <div class="container">
+        <div class="row row-pb-sm">
+            @foreach (var duyuru in Model)
+            {
+                <div class="col-md-4 animate-box">
+                    <div class="event-entry">
+                        <div class="desc">
+                            <p class="meta"><span class="day">@Convert.ToString(@duyuru.tarih.Day)</span><span class="month">@if (@duyuru.tarih.Month.ToString().Length > 1)
+                            {@aylar[Convert.ToInt32(duyuru.tarih.Month.ToString().First())][Convert.ToInt32(duyuru.tarih.ToString().ElementAt(1))] }
+                        else
+                        {@aylar[0][Convert.ToInt32(duyuru.tarih.Month)]}       </span></p>
+                            <p class="organizer"><span>@duyuru.duyuru_adi</span></p>
+                            <h2>@duyuru.duyuru_konu</h2>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+

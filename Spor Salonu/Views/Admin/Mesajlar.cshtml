@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Spor_Salonu.Models.Mesaj>
+@{
+    ViewBag.Title = "Mesajlar";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+    <div id="content-wrapper">
+        <div class="container-fluid">
+            <!-- Page Content -->
+            <h1>Mesajlar</h1>
+            <hr>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-9">
+                                @if (TempData["sonuc"] != null)
+                                {
+                                    <a class="alert alert-success"><b> @TempData["sonuc"]</b></a>
+                                }
+                            </div>
+                        </div>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Adı Soyadı</th>
+                                    <th scope="col">Mail Adresi</th>
+                                    <th scope="col">Konu</th>
+                                    <th scope="col">Tarih</th>
+                                    <th scope="col">Oku</th>
+                                    <th scope="col">Sil</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var mesaj in Model)
+                                {
+                                <tr>
+                                    <th scope="row">@mesaj.Id</th>
+                                    <td>@mesaj.ad @mesaj.soyad</td>
+                                    <td>@mesaj.mail</td>
+                                    <td>@mesaj.konu</td>
+                                    <td>@mesaj.tarih.ToLongDateString()</td>
+                                    @if (mesaj.okundu_bilgisi == 0)
+                                    {
+                                        <td><a class="text-primary" href="@Url.Action("MesajOku","Admin",new {id=mesaj.Id })"><i class="fa fa-book"></i> Oku</a></td>
+                                    }
+                                    else
+                                    {
+                                        <td><span class="text-primary"><i class="fa fa-book"></i> Okundu</span></td>
+                                    }
+                                    <td><a class="text-danger" href="@Url.Action("MesajSil","Admin",new {id=mesaj.Id })"><i class="fa fa-eraser"></i> Sil</a></td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container-fluid -->
+        <!-- Sticky Footer -->
+        <footer class="sticky-footer">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright © FITT4FREE 2019</span>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+

@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="veritabaniModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kullanici_adi" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="sifre" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Duyurular">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="duyuru_adi" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="duyuru_konu" Type="nchar" MaxLength="500" Nullable="false" />
+          <Property Name="tarih" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kayit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adsoyad" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="mail" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="telefon" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="uyelik_suresi" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="tarih" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mesaj">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="soyad" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="mail" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="konu" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="mesaj1" Type="nchar" MaxLength="500" Nullable="false" />
+          <Property Name="tarih" Type="datetime" Nullable="false" />
+          <Property Name="okundu_bilgisi" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Uyeler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uye_adisoyadi" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="telefon" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="mail" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="uyelik_baslangic_tarihi" Type="datetime" Nullable="false" />
+          <Property Name="uyelik_bitis_tarihi" Type="datetime" Nullable="false" />
+          <Property Name="toplam_ucret" Type="int" Nullable="false" />
+          <Property Name="odenen_ucret" Type="int" Nullable="false" />
+          <Property Name="kalan_ucret" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="veritabaniModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Duyurular" EntityType="Self.Duyurular" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kayit" EntityType="Self.Kayit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mesaj" EntityType="Self.Mesaj" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uyeler" EntityType="Self.Uyeler" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="veritabaniModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kullanici_adi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="sifre" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Duyurular">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="duyuru_adi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="duyuru_konu" Type="String" MaxLength="500" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="tarih" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Kayit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adsoyad" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="mail" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="telefon" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="uyelik_suresi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="tarih" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Mesaj">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="soyad" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="mail" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="konu" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="mesaj1" Type="String" MaxLength="500" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="tarih" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="okundu_bilgisi" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Uyeler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uye_adisoyadi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="telefon" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="mail" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="uyelik_baslangic_tarihi" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="uyelik_bitis_tarihi" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="toplam_ucret" Type="Int32" Nullable="false" />
+          <Property Name="odenen_ucret" Type="Int32" Nullable="false" />
+          <Property Name="kalan_ucret" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="veritabaniEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Duyurulars" EntityType="Self.Duyurular" />
+          <EntitySet Name="Kayits" EntityType="Self.Kayit" />
+          <EntitySet Name="Mesajs" EntityType="Self.Mesaj" />
+          <EntitySet Name="Uyelers" EntityType="Self.Uyeler" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="veritabaniModelStoreContainer" CdmEntityContainer="veritabaniEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="veritabaniModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="kullanici_adi" ColumnName="kullanici_adi" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Duyurulars">
+            <EntityTypeMapping TypeName="veritabaniModel.Duyurular">
+              <MappingFragment StoreEntitySet="Duyurular">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="duyuru_adi" ColumnName="duyuru_adi" />
+                <ScalarProperty Name="duyuru_konu" ColumnName="duyuru_konu" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kayits">
+            <EntityTypeMapping TypeName="veritabaniModel.Kayit">
+              <MappingFragment StoreEntitySet="Kayit">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="adsoyad" ColumnName="adsoyad" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="uyelik_suresi" ColumnName="uyelik_suresi" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mesajs">
+            <EntityTypeMapping TypeName="veritabaniModel.Mesaj">
+              <MappingFragment StoreEntitySet="Mesaj">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="konu" ColumnName="konu" />
+                <ScalarProperty Name="mesaj1" ColumnName="mesaj1" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="okundu_bilgisi" ColumnName="okundu_bilgisi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uyelers">
+            <EntityTypeMapping TypeName="veritabaniModel.Uyeler">
+              <MappingFragment StoreEntitySet="Uyeler">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="uye_adisoyadi" ColumnName="uye_adisoyadi" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="uyelik_baslangic_tarihi" ColumnName="uyelik_baslangic_tarihi" />
+                <ScalarProperty Name="uyelik_bitis_tarihi" ColumnName="uyelik_bitis_tarihi" />
+                <ScalarProperty Name="toplam_ucret" ColumnName="toplam_ucret" />
+                <ScalarProperty Name="odenen_ucret" ColumnName="odenen_ucret" />
+                <ScalarProperty Name="kalan_ucret" ColumnName="kalan_ucret" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

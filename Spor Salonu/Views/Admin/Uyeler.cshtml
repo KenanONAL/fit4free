@@ -1,0 +1,108 @@
+﻿@model IEnumerable<Spor_Salonu.Models.Uyeler>
+@{
+    ViewBag.Title = "Uyeler";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<div id="content-wrapper">
+    <div class="container-fluid">
+        <!-- Page Content -->
+        <h1>Üyeler</h1>
+        <hr>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <a class="btn btn-success btn-block btn-flat" href="@Url.Action("UyeEkle", "Admin")"><b id="kayit">Yeni Kayıt</b></a>
+                        </div>
+                        <div class="col-md-9">
+                            @if (TempData["sonuc"] != null)
+                            {
+                                <a class="alert alert-success"><b> @TempData["sonuc"]</b></a>
+                            }
+                        </div>
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Adı Soyadı</th>
+                                <th scope="col">Telefon</th>
+                                <th scope="col">Mail</th>
+                                <th scope="col">Üyelik Başlangıç Tarihi</th>
+                                <th scope="col">Üyelik Bitiş Tarihi</th>
+                                <th scope="col">Üyelik Ücreti</th>
+                                <th scope="col">Kalan Ücret</th>
+                                <th scope="col">Ödeme Yap</th>
+                                <th scope="col">Düzenle</th>
+                                <th scope="col">Sil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{int i = 0;}
+                            @foreach (var uyeler in Model)
+                            {
+                                <tr>
+                                    <th scope="row">@uyeler.Id</th>
+                                    <td>@uyeler.uye_adisoyadi</td>
+                                    <td>@uyeler.telefon</td>
+                                    <td>@uyeler.mail</td>
+                                    <td>@uyeler.uyelik_baslangic_tarihi.ToLongDateString()</td>
+                                    <td>@uyeler.uyelik_bitis_tarihi.ToLongDateString()</td>
+                                    <td>@uyeler.toplam_ucret ₺</td>
+                                    <td>@uyeler.kalan_ucret ₺</td>
+                                    <td>
+                                        @using (Html.BeginForm("UyeOdemeYap", "Admin"))
+                                        {
+                                            <div id="form" style="display:none">
+                                            </div>
+                                        }
+                                            <button id="odemeacbutonu" type="button" class="text-success" onclick="goster(@i,@uyeler.Id)"><i class="fa fa-check-circle"></i> Ödeme Aç</button>
+                                        </td>
+                                    <td><a class="text-warning" href="@Url.Action("UyeDuzenle", "Admin", new { id = uyeler.Id })"><i class="fa fa-edit"></i> Düzenle</a></td>
+                                    <td><a class="text-danger" href="@Url.Action("UyeSil", "Admin", new { id = uyeler.Id })"><i class="fa fa-eraser"></i> Sil</a></td>
+                                </tr>
+                                i++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+    <!-- Sticky Footer -->
+    <footer class="sticky-footer">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright © FITT4FREE 2019</span>
+            </div>
+        </div>
+    </footer>
+
+</div>
+<script type="text/javascript">
+    // göster/gizle
+    var elms = document.querySelectorAll("[id='odemeacbutonu']");
+    var form = document.querySelectorAll("[id='form']");
+
+    function goster(id,uid) {
+
+        if (form[id].style.display == 'none') {
+            form[id].style.display = '';
+            form[id].innerHTML = "<input class='form-control' type='text' value='0' name='ucret' autocomplete:off/> <input class='form-control' type='text' value='" + uid + "' name='uid' style='display:none'/>  <button id='ode' type='submit' class='text-success' type='button'>Öde</button> <button id='kapat' onclick='goster(" + id + ")' class='text-danger' type='button'>Kapat</button>        ";
+            elms[id].style.display = 'none';
+
+        }
+        else if (form[id].style.display == '') {
+            form[id].style.display = 'none';
+            form[id].innerHTML = "";
+            elms[id].style.display = '';
+        }
+    }
+  
+</script>
+
+

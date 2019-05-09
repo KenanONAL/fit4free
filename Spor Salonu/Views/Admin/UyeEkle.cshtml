@@ -1,0 +1,90 @@
+﻿@model Spor_Salonu.ViewModel.uyelerModel
+@{
+    ViewBag.Title = "UyeEkle";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+    <div id="content-wrapper">
+        <div class="container-fluid">
+            <!-- Page Content -->
+            <h1>Üye Ekle</h1>
+            <hr>
+            <div class="container">
+                @using (Html.BeginForm("UyeEkle", "Admin", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                @Html.LabelFor(k => k.uye_adisoyadi)
+                                @Html.TextBoxFor(k => k.uye_adisoyadi, new { @class = "form-control", autocomplete = "off" })
+                                @Html.ValidationMessageFor(k => k.uye_adisoyadi, null, new { @class = "text-danger" })
+                                <!-- text input -->
+                            </div>
+                            <div class="col-sm-5">
+                                @Html.LabelFor(k => k.telefon)
+                                @Html.TextBoxFor(k => k.telefon, new { @class = "form-control", autocomplete = "off" })
+                                @Html.ValidationMessageFor(k => k.telefon, null, new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                @Html.LabelFor(k => k.mail)
+                                @Html.TextBoxFor(k => k.mail, new { @class = "form-control", autocomplete = "off" })
+                                @Html.ValidationMessageFor(k => k.mail, null, new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-5">
+                                @Html.LabelFor(k => k.uyelik_baslangic_tarihi)
+                                <input class="form-control" autocomplete="off" type="date" name="uyelik_baslangic_tarihi" />
+                                @Html.ValidationMessageFor(k => k.uyelik_baslangic_tarihi, null, new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                @Html.LabelFor(k => k.uyelik_bitis_tarihi)
+                                <input class="form-control" autocomplete="off" type="date" name="uyelik_bitis_tarihi" />
+                                @Html.ValidationMessageFor(k => k.uyelik_bitis_tarihi, null, new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-5">
+                                @Html.LabelFor(k => k.toplam_ucret)
+                                @Html.TextBoxFor(k => k.toplam_ucret, new { @class = "form-control", autocomplete = "off" })
+                                @Html.ValidationMessageFor(k => k.toplam_ucret, null, new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                @Html.LabelFor(k => k.odenen_ucret)
+                                @Html.TextBoxFor(k => k.odenen_ucret, new { @class = "form-control", autocomplete = "off" })
+                                @Html.ValidationMessageFor(k => k.odenen_ucret, null, new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-5">
+                                @Html.LabelFor(k => k.kalan_ucret)
+                                @Html.TextBoxFor(k => k.kalan_ucret, new { @class = "form-control", autocomplete = "off" })
+                                @Html.ValidationMessageFor(k => k.kalan_ucret, null, new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input class="btn btn-primary" type="submit" value="Ekle">
+                    </div>
+                }
+            </div>
+
+                </div>
+        <!-- /.container-fluid -->
+        <!-- Sticky Footer -->
+        <footer class="sticky-footer">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright © FITT4FREE 2019</span>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+

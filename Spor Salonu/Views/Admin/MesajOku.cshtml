@@ -1,0 +1,59 @@
+﻿@model Spor_Salonu.Models.Mesaj
+@{
+    ViewBag.Title = "MesajOku";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<div id="content-wrapper">
+    <div class="container-fluid">
+        <!-- Page Content -->
+        <h1>Mesaj Detay</h1>
+        <hr>
+        <div class="container">
+            <div class="row form-group">
+                <div class="col-md-4">
+                    <label>Adı Soyadı </label><br />
+                    <input type="text" value="@Model.ad.Trim() @Model.soyad.Trim()" disabled />
+                </div>
+                <div class="col-md-4">
+                    <label>E-Mail  </label><br />
+                    <input id="mail" type="text" value="@Model.mail.Trim()" disabled />
+                </div>
+
+            </div>
+            <div class="row form-group">
+                <div class="col-md-6">
+                    <label>Konu </label><br />
+                    <input id="konu" type="text" disabled value="@Model.konu.Trim()" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-5">
+                    <label>Mesaj</label><br />
+                    <textarea style="width:100%;height:200px" disabled>@Model.mesaj1.Trim() asdasdjnakjsdbnkjasbdkjabsdkjasjkdaksjdkjasbdkj wejd wed wq dkqw dkwq dkjq wk</textarea>
+                    <br />
+                    <div style="right:0px;position:absolute;margin-right:15px">
+                        <a href="@Url.Action("Mesajlar","Admin")" class="btn btn-flat btn-primary">Geri</a>
+                        <a href="@Url.Action("MesajSil","Admin",new {id=Model.Id })" class="btn btn-flat btn-danger">Sil</a>
+                    </div>
+                </div>               
+            </div>            
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+    <!-- Sticky Footer -->
+    <footer class="sticky-footer">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright © FITT4FREE 2019</span>
+            </div>
+        </div>
+    </footer>
+</div>
+<script>
+    
+    document.getElementById("mail").style.width = ((@Model.mail.Length) * 5).toString() + "px";
+    document.getElementById("adsoyad").style.width = ((@Model.ad.Length+@Model.soyad.Length) * 5).toString() + "px";
+    document.getElementById("konu").style.width = ((@Model.konu.Length) * 5).toString() + "px";  
+</script>
+

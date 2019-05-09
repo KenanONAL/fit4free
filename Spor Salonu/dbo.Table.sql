@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Table]
+(
+	[Id] INT NOT NULL PRIMARY KEY, 
+    [duyuru_adi] NCHAR(50) NOT NULL, 
+    [duyuru_konu] NCHAR(500) NOT NULL, 
+    [tarih] DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+)

@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "Hakkimizda";
+    Layout = "~/Views/Shared/_Site.cshtml";
+}
+
+<aside id="colorlib-hero">
+    <div class="flexslider">
+        <ul class="slides">
+            <li style="background-image: url(@Url.Content("~/content/")images/img_bg_2.jpg);">
+                <div class="overlay"></div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-md-offset slider-text">
+                            <div class="slider-text-inner text-center">
+                                <h1>Hakkımızda</h1>
+                                <h2><span><a href="@Url.Action("Index","Home")">Anasayfa</a> | Hakkımızda</span></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</aside>
+
+<div id="colorlib-about">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 text-center animate-box">
+                <div class="about-wrap">
+                    <div class="heading-2">
+                        <h2>Biz Kimiz ?</h2>
+                    </div>
+                    <p>
+                        Fitt4Free 2010 yılından bu yana üyelerine sağlık ve spor aktivitelerini profosyonel bir hizmet anlayışı ile sunuyor. Toplamda 1500 m2 alanda hizmet veren tesisimiz, Türkiye’nin en kullanışlı ekipmanlarından oluşan bir fitness merkezi,size özel fitness programınız ile hayatınıza sağlık ve spor disiplini katıyoruz. Egzersiz yapmayı alışkanlık haline getirebilmeniz için;
+                        alanında profosyonel fitness eğitmenleri, size en uygun üyelik seçeneklerini belirleyen program danışmanlarımız ve tüm ekip arkadaşlarımız ile sizlere hizmet veriyoruz.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="colorlib-trainers">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center colorlib-heading animate-box">
+                <h2>Misyon ve Mizyonumuz</h2>
+                <p>
+                    Türkiye’de son yıllarda artan talep ile gelişen fitness sektöründe yer alarak, amacımız üyelerimize kısa süreliğine antreman yapmalarını sağlamak değil, egzersizi yaşam tarzı haline getirmelerini sağlamaktır. 168 saatten oluşan bir haftanın sadece 3 4 saatini kendilerine ayırarak egzersiz yapmaya karar vermeniz yeterlidir. Siz egzersize başladığınızda ilk önce vücut ölçüm analizleriniz yapılacakve her 30 (otuz) günde bir düzenli olarak tekrarlanacaktır. Bu program ile sizde kendinizde ki değişimi takip etmiş olacak, aynı zaman da yeni antreman programları ile istediğiniz sonuçları yüzdeyüz almış olacaksınız.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-3 animate-box">
+                <div class="trainers-entry">
+                    <div class="trainer-img" style="background-image: url(@Url.Content("~/content/")images/trainer-1.jpg)"></div>
+                    <div class="desc">
+                        <h3>POLAT DEMİRTAŞ</h3>
+                        <span>Body Building Trainer | Personal Trainer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-3 animate-box">
+                <div class="trainers-entry">
+                    <div class="trainer-img" style="background-image: url(@Url.Content("~/content/")images/trainer-2.jpg)"></div>
+                    <div class="desc">
+                        <h3>TURGAY</h3>
+                        <span>Sporty Director | Personal Trainer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-3 animate-box">
+                <div class="trainers-entry">
+                    <div class="trainer-img" style="background-image: url(@Url.Content("~/content/")images/trainer-3.jpg)"></div>
+                    <div class="desc">
+                        <h3>MURAT</h3>
+                        <span>Running Trainer | Personal Trainer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Spor_Salonu.Models.Kayit>
+@{
+    ViewBag.Title = "Kayitlar";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+    <div id="content-wrapper">
+        <div class="container-fluid">
+            <!-- Page Content -->
+            <h1>Ön Kayıtlar</h1>
+            <hr>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-9">
+                                @if (TempData["sonuc"] != null)
+                                {
+                                    <a class="alert alert-success"><b> @TempData["sonuc"]</b></a>
+                                }
+                            </div>
+                        </div>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Adı Soyadı</th>
+                                    <th scope="col">Telefon</th>
+                                    <th scope="col">Mail</th>
+                                    <th scope="col">Üyelik Süresi</th>
+                                    <th scope="col">Tarih</th>
+                                    <th scope="col">Sil</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var kayit in Model)
+                                {
+                                    <tr>
+                                        <th scope="row">@kayit.Id</th>
+                                        <td>@kayit.adsoyad</td>
+                                        <td>@kayit.telefon</td>
+                                        <td>@kayit.mail</td>
+                                        <td>@kayit.uyelik_suresi</td>
+                                        <td>@kayit.tarih.ToLongDateString()</td>
+                                        <td><a class="text-danger" href="@Url.Action("KayitSil","Admin",new {id=kayit.Id })"><i class="fa fa-eraser"></i> Sil</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container-fluid -->
+        <!-- Sticky Footer -->
+        <footer class="sticky-footer">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright © FITT4FREE 2019</span>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+

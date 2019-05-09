@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Spor_Salonu.Models.Duyurular>
+@{
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+    
+<div id="content-wrapper">
+        <div class="container-fluid">
+            <!-- Page Content -->
+            <h1>Duyurular</h1>
+            <hr>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <a class="btn btn-success btn-block btn-flat" href="@Url.Action("DuyuruEkle","Admin")"><b>Yeni Kayıt</b></a>
+                            </div>
+                            <div class="col-md-9">
+                                @if (TempData["sonuc"] != null)
+                                {
+                                    <a class="alert alert-success"><b> @TempData["sonuc"]</b></a>
+                                }
+                            </div>
+                        </div>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Duyuru Adı</th>
+                                    <th scope="col">Duyuru İçeriği</th>
+                                    <th scope="col">Tarih</th>
+                                    <th scope="col">Düzenle</th>
+                                    <th scope="col">Sil</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var duyuru in Model)
+                                {
+                                    <tr>
+                                        <th scope="row">@duyuru.Id</th>
+                                        <td>@duyuru.duyuru_adi</td>
+                                        <td>@duyuru.duyuru_konu</td>
+                                        <td>@duyuru.tarih.ToLongDateString()</td>
+                                        <td><a class="text-primary" href="@Url.Action("DuyuruDuzenle","Admin",new {id=duyuru.Id })"><i class="fa fa-pen"></i> Düzenle</a></td>
+                                        <td><a class="text-danger" href="@Url.Action("DuyuruSil","Admin",new {id=duyuru.Id })"><i class="fa fa-eraser"></i> Sil</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container-fluid -->
+        <!-- Sticky Footer -->
+        <footer class="sticky-footer">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright © FITT4FREE 2019</span>
+                </div>
+            </div>
+        </footer>
+
+    </div>
