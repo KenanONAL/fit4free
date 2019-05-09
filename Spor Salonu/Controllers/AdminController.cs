@@ -332,7 +332,7 @@ namespace Spor_Salonu.Controllers
                 Uyeler uye = db.Uyeler.SingleOrDefault(k=>k.Id==uid);
                 uye.kalan_ucret = uye_getir.kalan_ucret - Convert.ToInt32(collection.Get("ucret"));
                 db.SaveChanges();
-                TempData["sonuc"]="Ödeme Başarıyla Gerçekleşti";
+                TempData["sonuc"]="Ödeme Başarıyla Gerçekleşti.";
                 Response.Redirect(Url.Action("Uyeler", "Admin"));
             }
             catch
