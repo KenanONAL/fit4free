@@ -54,7 +54,7 @@ namespace Spor_Salonu.Controllers
                     duyuru.tarih = DateTime.Now;
                     db.Duyurular.Add(duyuru);
                     db.SaveChanges();
-                    TempData["sonuc"] = "Kayıt Başarılı Şekilde Yapıldı";
+                    TempData["sonuc"] = "Kayıt Başarılı Şekilde Yapıldı.";
                     return new RedirectResult(@"~\Admin\Duyurular");
                 }
                 catch
