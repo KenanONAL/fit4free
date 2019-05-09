@@ -337,7 +337,7 @@ namespace Spor_Salonu.Controllers
             }
             catch
             {
-                TempData["sonuc"] = "Ödeme Başarısız Oldu";
+                TempData["sonuc"] = "Ödeme Başarısız Oldu.";
                 Response.Redirect(Url.Action("Uyeler", "Admin"));
             }
         }
