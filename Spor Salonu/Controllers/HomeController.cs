@@ -26,17 +26,20 @@ namespace Spor_Salonu.Controllers
 
         public ActionResult Hakkimizda()
         {
-            return View();
+            var duyuruListe = db.Duyurular.OrderByDescending(c => c.tarih).ToList().Take(3);
+            return View(duyuruListe);
         }
 
         public ActionResult Iletisim()
         {
-            return View();
+            var duyuruListe = db.Duyurular.OrderByDescending(c => c.tarih).ToList().Take(3);
+            return View(duyuruListe);
         }
 
         [HttpPost]
         public ActionResult Iletisim(iletisimModel model)
         {
+            var duyuruListe = db.Duyurular.OrderByDescending(c => c.tarih).ToList().Take(3);
             try
             {
                 Mesaj alinan_mesaj = new Mesaj();
@@ -54,17 +57,19 @@ namespace Spor_Salonu.Controllers
             {
                 TempData["sonuc"] = "Bir Hata Oluştu";
             }
-            return View();
+            return View(duyuruListe);
         }
 
         public ActionResult OnKayit()
         {
-            return View();
+            var duyuruListe = db.Duyurular.OrderByDescending(c => c.tarih).ToList().Take(3);
+            return View(duyuruListe);
         }
 
         [HttpPost]
         public ActionResult OnKayit(kayitModel model)
         {
+            var duyuruListe = db.Duyurular.OrderByDescending(c => c.tarih).ToList().Take(3);
             Kayit on_kayit = new Kayit();
             on_kayit.adsoyad = model.adsoyad;
             on_kayit.mail = model.mail;
@@ -75,7 +80,7 @@ namespace Spor_Salonu.Controllers
             db.SaveChanges();
 
             TempData["sonuc"] = "Ön Kaydınız Başarılı Şekilde Kaydedildi";
-            return View();
+            return View(duyuruListe);
         }
 
         public ActionResult AdminGiris()
