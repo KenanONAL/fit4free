@@ -49,7 +49,11 @@
                                     <td>@uyeler.telefon</td>
                                     <td>@uyeler.mail</td>
                                     <td>@uyeler.uyelik_baslangic_tarihi.ToLongDateString()</td>
-                                    <td>@uyeler.uyelik_bitis_tarihi.ToLongDateString()</td>
+                                    @if (@uyeler.uyelik_bitis_tarihi<DateTime.Now) {<td class="text-danger">@uyeler.uyelik_bitis_tarihi.ToLongDateString()</td> }
+                                    else
+                                    {
+                                        <td class="text-success">@uyeler.uyelik_bitis_tarihi.ToLongDateString()</td>
+                                    }
                                     <td>@uyeler.toplam_ucret ₺</td>
                                     <td>@uyeler.kalan_ucret ₺</td>
                                     <td>
@@ -61,7 +65,7 @@
                                             <button id="odemeacbutonu" type="button" class="text-success" onclick="goster(@i,@uyeler.Id)"><i class="fa fa-check-circle"></i> Ödeme Aç</button>
                                         </td>
                                     <td><a class="text-warning" href="@Url.Action("UyeDuzenle", "Admin", new { id = uyeler.Id })"><i class="fa fa-edit"></i> Düzenle</a></td>
-                                    <td><a class="text-danger" href="@Url.Action("UyeSil", "Admin", new { id = uyeler.Id })"><i class="fa fa-eraser"></i> Sil</a></td>
+                                    <td><a class="text-danger" href=" @Url.Action("UyeSil", "Admin", new { id = uyeler.Id })"><i class="fa fa-eraser"></i> Sil</a></td>
                                 </tr>
                                 i++;
                             }

@@ -205,7 +205,7 @@ namespace Spor_Salonu.Controllers
         {
             if (Session["admin"]!=null)
             {
-                List<Uyeler> uyeList = db.Uyeler.ToList();
+                List<Uyeler> uyeList = db.Uyeler.OrderBy(c=>c.uyelik_bitis_tarihi).ToList();
                 return View(uyeList); 
             }
             else
