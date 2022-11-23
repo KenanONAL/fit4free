@@ -30,7 +30,7 @@ namespace Spor_Salonu.Controllers
         {
             if (Session["admin"] != null)
             {
-                List<Duyurular> duyuruListe = db.Duyurular.ToList();
+                List<Duyurulars> duyuruListe = db.Duyurulars.ToList();
                 return View(duyuruListe);
             }
             return new RedirectResult(@"~\Home\AdminGiris");
@@ -42,17 +42,17 @@ namespace Spor_Salonu.Controllers
         }
 
         [HttpPost]
-        public ActionResult DuyuruEkle(duyurularModel model)
+        public ActionResult DuyuruEkle(Duyurulars model)
         {
             if (Session["admin"] != null)
             {
                 try
                 {
-                    Duyurular duyuru = new Duyurular();
+                    Duyurulars duyuru = new Duyurulars();
                     duyuru.duyuru_adi = model.duyuru_adi;
                     duyuru.duyuru_konu = model.duyuru_konu;
                     duyuru.tarih = DateTime.Now;
-                    db.Duyurular.Add(duyuru);
+                    db.Duyurulars.Add(duyuru);
                     db.SaveChanges();
                     TempData["sonuc"] = "Kayıt Başarılı Şekilde Yapıldı.";
                     return new RedirectResult(@"~\Admin\Duyurular");
@@ -73,7 +73,7 @@ namespace Spor_Salonu.Controllers
         {
             if (Session["admin"] != null)
             {
-                var duyuru = db.Duyurular.Where(s => s.Id == id).Single();
+                var duyuru = db.Duyurulars.Where(s => s.Id == id).Single();
                 TempData["duyuru_adi"] = duyuru.duyuru_adi.Trim();
                 TempData["duyuru_konu"] = duyuru.duyuru_konu.Trim();
                 return View();
@@ -91,12 +91,12 @@ namespace Spor_Salonu.Controllers
             {
                 try
                 {
-                    Duyurular duyuru = new Duyurular();
+                    Duyurulars duyuru = new Duyurulars();
                     duyuru.Id = model.Id;
                     duyuru.duyuru_adi = model.duyuru_adi;
                     duyuru.duyuru_konu = model.duyuru_konu;
                     duyuru.tarih = DateTime.Now;
-                    db.Duyurular.AddOrUpdate(duyuru);
+                    db.Duyurulars.AddOrUpdate(duyuru);
                     db.SaveChanges();
                     TempData["sonuc"] = "Kayıt Başarılı Şekilde Güncellendi";
                     return new RedirectResult(@"~\Admin\Duyurular");
@@ -117,7 +117,7 @@ namespace Spor_Salonu.Controllers
         {
             if (Session["admin"] != null)
             {
-                db.Duyurular.Remove(db.Duyurular.Where(d => d.Id == id).First());
+                db.Duyurulars.Remove(db.Duyurulars.Where(d => d.Id == id).First());
                 db.SaveChanges();
                 TempData["sonuc"] = "Duyuru Başarıyla Silindi";
                 Response.Redirect(Url.Action("Duyurular", "Admin"));
@@ -132,7 +132,7 @@ namespace Spor_Salonu.Controllers
         {
             if (Session["admin"] != null)
             {
-                List<Mesaj> mesajListesi = db.Mesaj.OrderByDescending(c => c.tarih).ToList();
+                List<Mesajs> mesajListesi = db.Mesajs.OrderByDescending(c => c.tarih).ToList();
                 return View(mesajListesi);
             }
             else
@@ -145,9 +145,9 @@ namespace Spor_Salonu.Controllers
         {
             if (Session["admin"] != null)
             {
-                Mesaj mesaj = db.Mesaj.Where(c => c.Id == id).Single();
+                Mesajs mesaj = db.Mesajs.Where(c => c.Id == id).Single();
                 mesaj.okundu_bilgisi = 1;
-                db.Mesaj.AddOrUpdate(mesaj);
+                db.Mesajs.AddOrUpdate(mesaj);
                 db.SaveChanges();
                 return View(mesaj);
             }
@@ -161,7 +161,7 @@ namespace Spor_Salonu.Controllers
         {
             if (Session["admin"] != null)
             {
-                db.Mesaj.Remove(db.Mesaj.Where(d => d.Id == id).First());
+                db.Mesajs.Remove(db.Mesajs.Where(d => d.Id == id).First());
                 db.SaveChanges();
                 TempData["sonuc"] = "Mesaj Başarıyla Silindi";
                 Response.Redirect(Url.Action("Mesajlar", "Admin"));
@@ -176,7 +176,7 @@ namespace Spor_Salonu.Controllers
         {
             if (Session["admin"] != null)
             {
-                List<Kayit> kayitListesi = db.Kayit.ToList();
+                List<Kayits> kayitListesi = db.Kayits.ToList();
                 return View(kayitListesi);
             }
             else
@@ -190,7 +190,7 @@ namespace Spor_Salonu.Controllers
         {
             if (Session["admin"]!=null)
             {
-                db.Kayit.Remove(db.Kayit.Where(d => d.Id == id).First());
+                db.Kayits.Remove(db.Kayits.Where(d => d.Id == id).First());
                 db.SaveChanges();
                 TempData["sonuc"] = "Kayıt Başarılı Şekilde Silindi";
                 Response.Redirect(Url.Action("Kayitlar", "Admin")); 
@@ -205,7 +205,7 @@ namespace Spor_Salonu.Controllers
         {
             if (Session["admin"]!=null)
             {
-                List<Uyeler> uyeList = db.Uyeler.OrderBy(c=>c.uyelik_bitis_tarihi).ToList();
+                List<Uyelers> uyeList = db.Uyelers.OrderBy(c=>c.uyelik_bitis_tarihi).ToList();
                 return View(uyeList); 
             }
             else
@@ -228,13 +228,13 @@ namespace Spor_Salonu.Controllers
         }
 
         [HttpPost]
-        public ActionResult UyeEkle(Uyeler model)
+        public ActionResult UyeEkle(Uyelers model)
         {
             if (Session["admin"] != null)
             {
                 try
                 {
-                    Uyeler uyeler = new Uyeler();
+                    Uyelers uyeler = new Uyelers();
                     uyeler.uye_adisoyadi = model.uye_adisoyadi;
                     uyeler.telefon = model.telefon;
                     uyeler.mail = model.mail;
@@ -244,7 +244,7 @@ namespace Spor_Salonu.Controllers
                     uyeler.odenen_ucret = model.odenen_ucret;
                     uyeler.kalan_ucret = model.kalan_ucret;
                     
-                    db.Uyeler.Add(uyeler);
+                    db.Uyelers.Add(uyeler);
                     db.SaveChanges();
                     TempData["sonuc"] = "Kayıt Başarılı Şekilde Yapıldı";
                     return new RedirectResult(@"~\Admin\Uyeler");
@@ -265,7 +265,7 @@ namespace Spor_Salonu.Controllers
         {
             if (Session["admin"]!=null)
             {
-                var uye = db.Uyeler.Where(k => k.Id == id).Single();
+                var uye = db.Uyelers.Where(k => k.Id == id).Single();
                 return View(uye); 
             }
             else
@@ -275,13 +275,13 @@ namespace Spor_Salonu.Controllers
         }
 
         [HttpPost]
-        public ActionResult UyeDuzenle(Uyeler model)
+        public ActionResult UyeDuzenle(Uyelers model)
         {
             if (Session["admin"]!=null)
             {
                 try
                 {
-                    Uyeler uye = new Uyeler();
+                    Uyelers uye = new Uyelers();
                     uye.Id = model.Id;
                     uye.uye_adisoyadi = model.uye_adisoyadi;
                     uye.telefon = model.telefon;
@@ -291,7 +291,7 @@ namespace Spor_Salonu.Controllers
                     uye.toplam_ucret = model.toplam_ucret;
                     uye.odenen_ucret = model.odenen_ucret;
                     uye.kalan_ucret = model.kalan_ucret;
-                    db.Uyeler.AddOrUpdate(uye);
+                    db.Uyelers.AddOrUpdate(uye);
                     db.SaveChanges();
                     TempData["sonuc"] = "Üye Başarılı Şekilde Güncellendi";
                     return new RedirectResult(@"~\Admin\Uyeler");
@@ -312,7 +312,7 @@ namespace Spor_Salonu.Controllers
         {
             if (Session["admin"]!=null)
             {
-                db.Uyeler.Remove(db.Uyeler.Where(k => k.Id == id).First());
+                db.Uyelers.Remove(db.Uyelers.Where(k => k.Id == id).First());
                 db.SaveChanges();
                 TempData["sonuc"] = "Üye Başarılı Şekilde Silindi";
                 Response.Redirect(Url.Action("Uyeler", "Admin")); 
@@ -328,8 +328,8 @@ namespace Spor_Salonu.Controllers
             try
             {
                 int uid = Convert.ToInt32(collection.Get("uid"));
-                var uye_getir = db.Uyeler.Where(k => k.Id == uid).Single();
-                Uyeler uye = db.Uyeler.SingleOrDefault(k=>k.Id==uid);
+                var uye_getir = db.Uyelers.Where(k => k.Id == uid).Single();
+                Uyelers uye = db.Uyelers.SingleOrDefault(k=>k.Id==uid);
                 uye.kalan_ucret = uye_getir.kalan_ucret - Convert.ToInt32(collection.Get("ucret"));
                 db.SaveChanges();
                 TempData["sonuc"]="Ödeme Başarıyla Gerçekleşti.";

@@ -5,11 +5,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="6c5a12105e6746979cee0da8edb5b424" Name="Diagram1">
-        <EntityTypeShape EntityType="veritabaniModel.Admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="veritabaniModel.Duyurular" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="veritabaniModel.Kayit" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="veritabaniModel.Mesaj" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="veritabaniModel.Uyeler" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="veritabaniModel.Admins" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="veritabaniModel.Duyurulars" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="veritabaniModel.Kayits" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="veritabaniModel.Mesajs" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="veritabaniModel.Uyelers" Width="1.5" PointX="4.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

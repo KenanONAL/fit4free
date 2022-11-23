@@ -12,7 +12,7 @@ namespace Spor_Salonu.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Admin
+    public partial class Admins
     {
         public int Id { get; set; }
         public string kullanici_adi { get; set; }

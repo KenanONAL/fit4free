@@ -12,13 +12,16 @@ namespace Spor_Salonu.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Kayit
+    public partial class Uyelers
     {
         public int Id { get; set; }
-        public string adsoyad { get; set; }
-        public string mail { get; set; }
+        public string uye_adisoyadi { get; set; }
         public string telefon { get; set; }
-        public string uyelik_suresi { get; set; }
-        public System.DateTime tarih { get; set; }
+        public string mail { get; set; }
+        public System.DateTime uyelik_baslangic_tarihi { get; set; }
+        public System.DateTime uyelik_bitis_tarihi { get; set; }
+        public int toplam_ucret { get; set; }
+        public int odenen_ucret { get; set; }
+        public int kalan_ucret { get; set; }
     }
 }

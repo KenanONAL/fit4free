@@ -12,7 +12,7 @@ namespace Spor_Salonu.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Mesaj
+    public partial class Mesajs
     {
         public int Id { get; set; }
         public string ad { get; set; }

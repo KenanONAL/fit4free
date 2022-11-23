@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Spor_Salonu</RootNamespace>
     <AssemblyName>Spor Salonu</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
@@ -25,6 +25,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>3.3</TypeScriptToolsVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -60,10 +61,6 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
@@ -98,10 +95,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\veritabani.mdf" />
-    <Content Include="App_Data\veritabani_log.ldf">
-      <DependentUpon>veritabani.mdf</DependentUpon>
-    </Content>
     <Content Include="content\about.html" />
     <Content Include="content\admin\404.html" />
     <Content Include="content\admin\blank.html" />
@@ -1756,6 +1749,10 @@
     <Content Include="content\js\owl.carousel.min.js" />
     <Content Include="content\js\respond.min.js" />
     <Content Include="content\schedule.html" />
+    <Content Include="content\veritabani.mdf" />
+    <Content Include="content\veritabani_log.ldf">
+      <DependentUpon>veritabani.mdf</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="content\css\bootstrap-grid.css.map" />
     <Content Include="content\css\bootstrap-grid.min.css.map" />
@@ -1781,6 +1778,7 @@
       <DependentUpon>VeritabaniModel.edmx</DependentUpon>
       <LastGenOutput>VeritabaniModel.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\VeritabaniModel.edmx.sql" />
     <Content Include="Models\VeritabaniModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>VeritabaniModel.edmx</DependentUpon>
@@ -1802,19 +1800,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Admin.cs">
+    <Compile Include="Models\Admins.cs">
       <DependentUpon>VeritabaniModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Duyurular.cs">
+    <Compile Include="Models\Duyurulars.cs">
       <DependentUpon>VeritabaniModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Kayit.cs">
+    <Compile Include="Models\Kayits.cs">
       <DependentUpon>VeritabaniModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Mesaj.cs">
+    <Compile Include="Models\Mesajs.cs">
       <DependentUpon>VeritabaniModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Uyeler.cs">
+    <Compile Include="Models\Uyelers.cs">
       <DependentUpon>VeritabaniModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\VeritabaniModel.Context.cs">

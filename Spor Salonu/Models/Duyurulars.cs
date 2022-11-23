@@ -12,7 +12,7 @@ namespace Spor_Salonu.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Duyurular
+    public partial class Duyurulars
     {
         public int Id { get; set; }
         public string duyuru_adi { get; set; }

@@ -25,10 +25,10 @@ namespace Spor_Salonu.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Admin> Admin { get; set; }
-        public virtual DbSet<Duyurular> Duyurular { get; set; }
-        public virtual DbSet<Kayit> Kayit { get; set; }
-        public virtual DbSet<Mesaj> Mesaj { get; set; }
-        public virtual DbSet<Uyeler> Uyeler { get; set; }
+        public virtual DbSet<Admins> Admins { get; set; }
+        public virtual DbSet<Duyurulars> Duyurulars { get; set; }
+        public virtual DbSet<Kayits> Kayits { get; set; }
+        public virtual DbSet<Mesajs> Mesajs { get; set; }
+        public virtual DbSet<Uyelers> Uyelers { get; set; }
     }
 }

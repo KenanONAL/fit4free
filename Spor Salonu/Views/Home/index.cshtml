@@ -1,10 +1,9 @@
-﻿@model IEnumerable<Spor_Salonu.Models.Duyurular>
+﻿@model IEnumerable<Spor_Salonu.Models.Duyurulars>
 @{
     ViewBag.Title = "Fitt4Free | Anasayfa";
     Layout = "~/Views/Shared/_Site.cshtml";
 }
-@{String[][] aylar ={ new String[] { "","Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül" },
-                         new String[] { "Ekim","Kasım","Aralık" }}; }
+
 
 <aside id="colorlib-hero">
     <div class="flexslider">
@@ -156,14 +155,14 @@
             <div class="col-md-8 col-md-offset-2 text-center colorlib-heading animate-box">
                 <h2>Duyurular</h2>
             </div>
-        </div>  
+        </div>
         <div class="row row-pb-sm">
             @foreach (var duyuru in Model)
             {
                 <div class="col-md-4 animate-box">
                     <div class="event-entry" style="background-color:white">
                         <div class="desc">
-                            <p class="meta"><span class="day">@Convert.ToString(@duyuru.tarih.Day)</span><span class="month">@if(@duyuru.tarih.Month.ToString().Length > 1) {  @aylar[Convert.ToInt32(duyuru.tarih.Month.ToString().First())][Convert.ToInt32(duyuru.tarih.ToString().ElementAt(1))] } else {@aylar[0][Convert.ToInt32(duyuru.tarih.Month)]}       </span></p>
+                            <p class="meta"><span class="day">@Convert.ToString(@duyuru.tarih.Day)</span><span class="month">@duyuru.tarih.ToString("MMMM")  </span></p>
                             <p class="organizer"><span>@duyuru.duyuru_adi</span></p>
                             <h2>@duyuru.duyuru_konu</h2>
                         </div>
@@ -171,7 +170,7 @@
                 </div>
             }
             <div class="col-md-12"><a href="@Url.Action("Duyurular","Home")"><span style="position:absolute;right:0px">Tüm Duyurular <i class="glyphicon glyphicon-circle-arrow-right"></i></span></a></div>
-        </div>       
+        </div>
     </div>
 </div>
 @*<div class="colorlib-blog colorlib-light-grey">
