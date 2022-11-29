@@ -30,5 +30,6 @@ namespace Spor_Salonu.Models
         public virtual DbSet<Kayits> Kayits { get; set; }
         public virtual DbSet<Mesajs> Mesajs { get; set; }
         public virtual DbSet<Uyelers> Uyelers { get; set; }
+        public virtual DbSet<Mesailer> Mesailer { get; set; }
     }
 }

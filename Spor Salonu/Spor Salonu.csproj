@@ -1678,22 +1678,30 @@
     <Content Include="content\css\AdminLTE.min.css" />
     <Content Include="content\css\animate.css" />
     <Content Include="content\css\blue.css" />
+    <Content Include="content\css\bootstrap-datetimepicker.css" />
+    <Content Include="content\css\bootstrap-datetimepicker.min.css" />
     <Content Include="content\css\bootstrap-grid.css" />
     <Content Include="content\css\bootstrap-grid.min.css" />
     <Content Include="content\css\bootstrap-reboot.css" />
     <Content Include="content\css\bootstrap-reboot.min.css" />
+    <Content Include="content\css\bootstrap-theme.css" />
+    <Content Include="content\css\bootstrap-theme.min.css" />
     <Content Include="content\css\bootstrap.css" />
     <Content Include="content\css\bootstrap.min.css" />
     <Content Include="content\css\flexslider.css" />
     <Content Include="content\css\font-awesome.min.css" />
+    <Content Include="content\css\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="content\css\Gruntfile.js" />
     <Content Include="content\css\icomoon.css" />
     <Content Include="content\css\ionicons.min.css" />
+    <Content Include="content\css\jquery.qtip.min.css" />
     <Content Include="content\css\magnific-popup.css" />
     <Content Include="content\css\owl.carousel.min.css" />
     <Content Include="content\css\owl.theme.default.min.css" />
     <Content Include="content\css\package.js" />
+    <Content Include="content\css\Site.css" />
     <Content Include="content\css\style.css" />
+    <Content Include="content\css\StyleSheet1.css" />
     <Content Include="content\css\_all-skins.min.css" />
     <Content Include="content\event.html" />
     <Content Include="content\images\blog-1.jpg" />
@@ -1749,6 +1757,7 @@
     <Content Include="content\js\owl.carousel.min.js" />
     <Content Include="content\js\respond.min.js" />
     <Content Include="content\schedule.html" />
+    <Content Include="content\Site.css" />
     <Content Include="content\veritabani.mdf" />
     <Content Include="content\veritabani_log.ldf">
       <DependentUpon>veritabani.mdf</DependentUpon>
@@ -1770,8 +1779,14 @@
     <Content Include="Models\VeritabaniModel.edmx.diagram">
       <DependentUpon>VeritabaniModel.edmx</DependentUpon>
     </Content>
+    <Content Include="content\css\bootstrap-theme.css.map" />
+    <Content Include="content\css\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="content\css\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="content\css\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="content\css\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-1.8.0.intellisense.js" />
     <Content Include="Models\VeritabaniModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -1784,13 +1799,29 @@
       <DependentUpon>VeritabaniModel.edmx</DependentUpon>
       <LastGenOutput>VeritabaniModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-1.8.0.js" />
     <Content Include="Scripts\jquery-1.8.0.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.qtip.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -1807,6 +1838,9 @@
       <DependentUpon>VeritabaniModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Kayits.cs">
+      <DependentUpon>VeritabaniModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mesailer.cs">
       <DependentUpon>VeritabaniModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Mesajs.cs">
@@ -1835,6 +1869,7 @@
     <Compile Include="ViewModel\duyurularModel.cs" />
     <Compile Include="ViewModel\iletisimModel.cs" />
     <Compile Include="ViewModel\kayitModel.cs" />
+    <Compile Include="ViewModel\mesailerModel.cs" />
     <Compile Include="ViewModel\uyelerModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -3019,6 +3054,10 @@
     <Content Include="Views\Admin\Uyeler.cshtml" />
     <Content Include="Views\Admin\UyeEkle.cshtml" />
     <Content Include="Views\Admin\UyeDuzenle.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Admin\Mesailer.cshtml" />
+    <Content Include="Views\Admin\MesaiEkle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3030,7 +3069,9 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\mesailerModel\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

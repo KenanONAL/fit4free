@@ -20,7 +20,18 @@
 
     <!-- Custom styles for this template-->
     <link href="@Url.Content("~/content/admin/")css/sb-admin.css" rel="stylesheet">
+    <script type="text/javascript">
 
+        function uyari() {
+            var text = $("#dropdownMenuButton option:selected").val();
+
+            @ViewBag.deger=text;
+           
+            //return text;
+
+        }
+
+    </script>  
 </head>
 
 <body id="page-top">
@@ -87,6 +98,12 @@
                 <a class="nav-link" href="@Url.Action("Uyeler","Admin")">
                     <i class="fas fa-fw fa-address-card"></i>
                     <span>Üyeler</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Mesailer","Admin")">
+                    <i class="fas fa-fw fa-address-card"></i>
+                    <span>Mesailer</span>
                 </a>
             </li>
         </ul>

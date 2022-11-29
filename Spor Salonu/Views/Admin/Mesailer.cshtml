@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Spor_Salonu.Models.Mesailer>
+@{
+    ViewBag.Title = "Mesailer";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+@{string[] aylar = { "OCAK", "ŞUBAT", "MART", "NİSAN", "MAYIS", "HAZİRAN", "TEMMUZ", "AĞUSTOS", "EYLÜL", "EKİM", "KASIM", "ARALIK" };}
+
+<div id="content-wrapper">
+    <div class="container-fluid">
+        <!-- Page Content -->
+        <h1>Mesailer</h1>
+        <hr>
+        <h1 class="title text-center"> @DateTime.Now.ToString("MMMM  yyyy") </h1>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr class="text-center">
+                    <th colspan="7">
+                        MESAİ ÇİZELGESİ
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+
+                        @using (Html.BeginForm("Mesailer", "Admin", FormMethod.Post, new { @class = "row" }))
+                        {
+
+                            <div class="dropdown col-xs-2">
+
+                                <select name="ay" itemid="ay" class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    OCAK
+                                    @for (int j = 1; j <= 12; j++)
+                                    {
+                                        <option name="@j" id="@j" class="dropdown-item" value="@j">
+                                            @aylar[j - 1]
+
+                                        </option>
+
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-primary btn-flat">Listele</button>
+                            </div>
+
+                        }
+
+                        <div class="col-md-2">
+                            <a class="btn btn-success btn-block btn-flat" href="@Url.Action("MesaiEkle","Admin")"><b id="kayit">Mesai Ekle</b></a>
+
+                        </div>
+                        <div class="col-md-4">
+                            @if (TempData["sonuc"] != null)
+                            {
+                                <a class="alert alert-success"><b>@TempData["sonuc"]</b></a>
+                            }             
+                        
+                        </div>
+                        <table class="table table-striped" style="top=10px">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">AY</th>
+                                    <th scope="col">GÜN</th>
+                                    <th scope="col">SAAT</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{int toplam = 0;}
+                                @foreach (var mesailer in Model)
+                                {
+                                    toplam = toplam + (int)mesailer.Saat;
+                                    <tr>
+                                        <th scope="row">@mesailer.Id</th>
+                                        <td>@mesailer.Ay</td>
+                                        <td>@mesailer.Gun</td>
+                                        <td>@mesailer.Saat</td>
+                                        <td><a class="text-danger" href=" @Url.Action("MesaiSil", "Admin", new { id = mesailer.Id })"><i class="fa fa-eraser"></i> Sil</a></td>
+                                    </tr>
+                                 }
+                                <tr>
+                                    <th scope="row"> </th>
+                                    <th> </th>
+                                    <th> </th>
+                                    <th>Toplam = @toplam </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.container-fluid -->
+            <!-- Sticky Footer -->
+            <footer class="sticky-footer">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright © FITT4FREE 2019</span>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+
