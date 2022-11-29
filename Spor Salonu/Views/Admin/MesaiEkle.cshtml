@@ -1,0 +1,58 @@
+﻿@model Spor_Salonu.ViewModel.mesailerModel
+@{
+    ViewBag.Title = "MesaiEkle";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<div id="content-wrapper">
+    <div class="container-fluid">
+        <!-- Page Content -->
+        <h1>Mesai Ekle </h1>
+        <hr>
+        <div class="container">
+            @using (Html.BeginForm("MesaiEkle", "Admin", FormMethod.Post))
+            {
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-5">
+                            @Html.LabelFor(k => k.Ay)
+                            @Html.TextBoxFor(k => k.Ay, new { @class = "form-control", autocomplete = "off" })
+                            @Html.ValidationMessageFor(k => k.Ay, null, new { @class = "text-danger" })
+                            <!-- text input -->
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.LabelFor(k => k.Gun)
+                            @Html.TextBoxFor(k => k.Gun, new { @class = "form-control", autocomplete = "off" })
+                            @Html.ValidationMessageFor(k => k.Gun, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-5">
+                            @Html.LabelFor(k => k.Saat)
+                            @Html.TextBoxFor(k => k.Saat, new { @class = "form-control", autocomplete = "off" })
+                            @Html.ValidationMessageFor(k => k.Saat, null, new { @class = "text-danger" })
+                        </div>                        
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <input class="btn btn-primary" type="submit" value="Ekle">
+                </div>
+            }
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+    <!-- Sticky Footer -->
+    <footer class="sticky-footer">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright © FITT4FREE 2019</span>
+            </div>
+        </div>
+    </footer>
+
+</div>
+

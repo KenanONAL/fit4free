@@ -33,6 +33,15 @@
           <Property Name="uyelik_suresi" Type="nchar" MaxLength="50" Nullable="false" />
           <Property Name="tarih" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Mesailer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ay" Type="int" />
+          <Property Name="Gun" Type="int" />
+          <Property Name="Saat" Type="int" />
+        </EntityType>
         <EntityType Name="Mesajs">
           <Key>
             <PropertyRef Name="Id" />
@@ -64,6 +73,7 @@
           <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Duyurulars" EntityType="Self.Duyurulars" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kayits" EntityType="Self.Kayits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mesailer" EntityType="Self.Mesailer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mesajs" EntityType="Self.Mesajs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Uyelers" EntityType="Self.Uyelers" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -77,6 +87,7 @@
           <EntitySet Name="Kayits" EntityType="veritabaniModel.Kayits" />
           <EntitySet Name="Mesajs" EntityType="veritabaniModel.Mesajs" />
           <EntitySet Name="Uyelers" EntityType="veritabaniModel.Uyelers" />
+          <EntitySet Name="Mesailer" EntityType="veritabaniModel.Mesailer" />
         </EntityContainer>
         <EntityType Name="Admins">
           <Key>
@@ -132,6 +143,15 @@
           <Property Name="toplam_ucret" Type="Int32" Nullable="false" />
           <Property Name="odenen_ucret" Type="Int32" Nullable="false" />
           <Property Name="kalan_ucret" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mesailer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ay" Type="Int32" />
+          <Property Name="Gun" Type="Int32" />
+          <Property Name="Saat" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -195,6 +215,16 @@
                 <ScalarProperty Name="mail" ColumnName="mail" />
                 <ScalarProperty Name="telefon" ColumnName="telefon" />
                 <ScalarProperty Name="uye_adisoyadi" ColumnName="uye_adisoyadi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mesailer">
+            <EntityTypeMapping TypeName="veritabaniModel.Mesailer">
+              <MappingFragment StoreEntitySet="Mesailer">
+                <ScalarProperty Name="Saat" ColumnName="Saat" />
+                <ScalarProperty Name="Gun" ColumnName="Gun" />
+                <ScalarProperty Name="Ay" ColumnName="Ay" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

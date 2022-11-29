@@ -188,12 +188,12 @@ namespace Spor_Salonu.Controllers
 
         public void KayitSil(int id)
         {
-            if (Session["admin"]!=null)
+            if (Session["admin"] != null)
             {
                 db.Kayits.Remove(db.Kayits.Where(d => d.Id == id).First());
                 db.SaveChanges();
                 TempData["sonuc"] = "Kayıt Başarılı Şekilde Silindi";
-                Response.Redirect(Url.Action("Kayitlar", "Admin")); 
+                Response.Redirect(Url.Action("Kayitlar", "Admin"));
             }
             else
             {
@@ -203,10 +203,10 @@ namespace Spor_Salonu.Controllers
 
         public ActionResult Uyeler()
         {
-            if (Session["admin"]!=null)
+            if (Session["admin"] != null)
             {
-                List<Uyelers> uyeList = db.Uyelers.OrderBy(c=>c.uyelik_bitis_tarihi).ToList();
-                return View(uyeList); 
+                List<Uyelers> uyeList = db.Uyelers.OrderBy(c => c.uyelik_bitis_tarihi).ToList();
+                return View(uyeList);
             }
             else
             {
@@ -219,7 +219,7 @@ namespace Spor_Salonu.Controllers
 
             if (Session["admin"] != null)
             {
-                return View(); 
+                return View();
             }
             else
             {
@@ -243,7 +243,7 @@ namespace Spor_Salonu.Controllers
                     uyeler.toplam_ucret = model.toplam_ucret;
                     uyeler.odenen_ucret = model.odenen_ucret;
                     uyeler.kalan_ucret = model.kalan_ucret;
-                    
+
                     db.Uyelers.Add(uyeler);
                     db.SaveChanges();
                     TempData["sonuc"] = "Kayıt Başarılı Şekilde Yapıldı";
@@ -263,10 +263,10 @@ namespace Spor_Salonu.Controllers
 
         public ActionResult UyeDuzenle(int id)
         {
-            if (Session["admin"]!=null)
+            if (Session["admin"] != null)
             {
                 var uye = db.Uyelers.Where(k => k.Id == id).Single();
-                return View(uye); 
+                return View(uye);
             }
             else
             {
@@ -277,7 +277,7 @@ namespace Spor_Salonu.Controllers
         [HttpPost]
         public ActionResult UyeDuzenle(Uyelers model)
         {
-            if (Session["admin"]!=null)
+            if (Session["admin"] != null)
             {
                 try
                 {
@@ -300,7 +300,7 @@ namespace Spor_Salonu.Controllers
                 {
                     TempData["sonuc"] = "Bir Hata Oluştu";
                 }
-                return View(); 
+                return View();
             }
             else
             {
@@ -310,12 +310,12 @@ namespace Spor_Salonu.Controllers
 
         public void UyeSil(int id)
         {
-            if (Session["admin"]!=null)
+            if (Session["admin"] != null)
             {
                 db.Uyelers.Remove(db.Uyelers.Where(k => k.Id == id).First());
                 db.SaveChanges();
                 TempData["sonuc"] = "Üye Başarılı Şekilde Silindi";
-                Response.Redirect(Url.Action("Uyeler", "Admin")); 
+                Response.Redirect(Url.Action("Uyeler", "Admin"));
             }
             else
             {
@@ -329,10 +329,10 @@ namespace Spor_Salonu.Controllers
             {
                 int uid = Convert.ToInt32(collection.Get("uid"));
                 var uye_getir = db.Uyelers.Where(k => k.Id == uid).Single();
-                Uyelers uye = db.Uyelers.SingleOrDefault(k=>k.Id==uid);
+                Uyelers uye = db.Uyelers.SingleOrDefault(k => k.Id == uid);
                 uye.kalan_ucret = uye_getir.kalan_ucret - Convert.ToInt32(collection.Get("ucret"));
                 db.SaveChanges();
-                TempData["sonuc"]="Ödeme Başarıyla Gerçekleşti.";
+                TempData["sonuc"] = "Ödeme Başarıyla Gerçekleşti.";
                 Response.Redirect(Url.Action("Uyeler", "Admin"));
             }
             catch
@@ -347,5 +347,93 @@ namespace Spor_Salonu.Controllers
             Session.Abandon();
             Response.Redirect(Url.Action("Index", "Home"));
         }
+
+        public ActionResult Mesailer()
+        {            
+            List<Mesailer> mesailer = db.Mesailer.OrderByDescending(c => c.Ay).ToList();
+            
+            return View(mesailer);
+            //if (Session["admin"] != null)
+            //{
+            //    List<Mesailer> uyeList = db.Mesailer.OrderBy(c => c.Gun).ToList();
+            //    return View(uyeList);
+            //}
+            //else
+            //{
+            //    return new RedirectResult(@"~\Home\AdminGiris");
+            //}
+        }
+        
+        public ActionResult MesaiEkle()
+        {
+            return View();
+            //if (Session["admin"] != null)
+            //{
+            //    return View();
+            //}
+            //else
+            //{
+            //    return new RedirectResult(@"~\Home\AdminGiris");
+            //}
+        }
+        [HttpPost]
+        public ActionResult MesaiEkle(Mesailer model)
+        {
+
+            //if (Session["admin"] != null)
+            //{
+            try
+            {
+                Mesailer mesailer = new Mesailer();
+                mesailer.Ay = model.Ay;
+                mesailer.Gun = model.Gun;
+                mesailer.Saat = model.Saat;
+
+                db.Mesailer.Add(mesailer);
+                db.SaveChanges();
+                TempData["sonuc"] = "Kayıt Başarılı Şekilde Yapıldı";
+                return new RedirectResult(@"~\Admin\Mesailer");
+            }
+            catch
+            {
+                TempData["sonuc"] = "Bir Hata Oluştu";
+            }
+            return View();
+            //}
+            //else
+            //{
+            //    return new redirectresult(@"~\home\admingiris");
+            //}
+
+        }
+        [HttpPost]
+        public ActionResult Mesailer(int ay)
+        {
+            if (Session["admin"] != null)
+            {
+                
+                var mesai = db.Mesailer.Where(k => k.Ay == ay);
+                return View(mesai);
+            }
+            else
+            {
+                return new RedirectResult(@"~\Home\AdminGiris");
+            }
+        }
+        public void MesaiSil(int id)
+        {
+            if (Session["admin"] != null)
+            {
+                db.Mesailer.Remove(db.Mesailer.Where(k => k.Id == id).First());
+                db.SaveChanges();
+                TempData["sonuc"] = "Mesai Başarılı Şekilde Silindi";
+                Response.Redirect(Url.Action("Mesailer", "Admin"));
+            }
+            else
+            {
+                new RedirectResult(@"~\Home\AdminGiris");
+            }
+        }
+
     }
 }
