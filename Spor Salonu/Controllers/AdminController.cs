@@ -1,11 +1,16 @@
-﻿using Spor_Salonu.Models;
+﻿using OfficeOpenXml;
+using Spor_Salonu.Models;
 using Spor_Salonu.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
+using static System.Net.WebRequestMethods;
 
 namespace Spor_Salonu.Controllers
 {
@@ -349,9 +354,9 @@ namespace Spor_Salonu.Controllers
         }
 
         public ActionResult Mesailer()
-        {            
+        {
             List<Mesailer> mesailer = db.Mesailer.OrderByDescending(c => c.Ay).ToList();
-            
+
             return View(mesailer);
             //if (Session["admin"] != null)
             //{
@@ -363,7 +368,7 @@ namespace Spor_Salonu.Controllers
             //    return new RedirectResult(@"~\Home\AdminGiris");
             //}
         }
-        
+
         public ActionResult MesaiEkle()
         {
             return View();
@@ -406,14 +411,48 @@ namespace Spor_Salonu.Controllers
             //}
 
         }
+        
         [HttpPost]
         public ActionResult Mesailer(int ay)
         {
             if (Session["admin"] != null)
             {
-                
                 var mesai = db.Mesailer.Where(k => k.Ay == ay);
+                ViewBag.Ay = ay;
+                if (Request.Form["listele"]!=null)
+                {
+                    return View(mesai);
+                }
+                else if (Request.Form["excel"]!=null)
+                {
+                    var mesailer = db.Mesailer.Where(c => c.Ay == ay).OrderByDescending(c => c.Ay).ToList(); ;
+                    string strFileName = @"C:\Users\konal\Desktop\mesai.xlsx";
+                    FileInfo fileInfo = new FileInfo(strFileName);
+
+                    using (ExcelPackage excelPackage = new ExcelPackage(fileInfo))
+                    {
+
+                        ExcelPackage.LicenseContext = LicenseContext.Commercial;
+                        ExcelWorksheet namedWorksheet = excelPackage.Workbook.Worksheets["mesai"];
+
+                        for (int i = 3; i <= 33; i++)
+                        {
+                            namedWorksheet.Cells[6, Convert.ToInt32(i)].Value = "";
+                        }
+
+                        foreach (var item in mesailer)
+                        {
+                            namedWorksheet.Cells[6, Convert.ToInt32(item.Gun + 2)].Value = item.Saat;
+                        }
+                        excelPackage.SaveAs(fileInfo);
+                        excelPackage.Dispose();
+                    }
+                    Process.Start(new ProcessStartInfo { FileName = strFileName, UseShellExecute = true });
+                    Response.Redirect(Url.Action("Mesailer", "Admin"));
+                    
+                }
                 return View(mesai);
+
             }
             else
             {
@@ -433,6 +472,36 @@ namespace Spor_Salonu.Controllers
             {
                 new RedirectResult(@"~\Home\AdminGiris");
             }
+        }
+
+        public void ExcelAktar()
+        {
+            
+            
+            //var mesailer = db.Mesailer.Where(c=>c.Ay==).OrderByDescending(c => c.Ay).ToList(); ;
+            //string strFileName = @"C:\Users\konal\Desktop\mesai.xlsx";
+            //FileInfo fileInfo=new FileInfo(strFileName);
+            
+            //    using (ExcelPackage excelPackage = new ExcelPackage(fileInfo))
+            //    {
+
+            //    ExcelPackage.LicenseContext = LicenseContext.Commercial;
+            //    ExcelWorksheet namedWorksheet = excelPackage.Workbook.Worksheets["mesai"];
+
+            //    for(int i=3;i<=33;i++)
+            //    {
+            //        namedWorksheet.Cells[6, Convert.ToInt32(i)].Value ="";
+            //    }
+
+            //    foreach (var item in mesailer)
+            //    {
+            //        namedWorksheet.Cells[6,Convert.ToInt32(item.Gun+2)].Value = item.Saat;
+            //    }
+            //        excelPackage.SaveAs(fileInfo);
+            //        excelPackage.Dispose();
+            //    }
+            //Process.Start(new ProcessStartInfo { FileName = strFileName, UseShellExecute = true });
+            //Response.Redirect(Url.Action("Mesailer", "Admin"));
         }
 
     }
