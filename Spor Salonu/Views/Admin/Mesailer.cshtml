@@ -28,7 +28,7 @@
                 <div class="col-md-12">
                     <div class="row">
 
-                        @using (Html.BeginForm("Mesailer", "Admin", FormMethod.Post, new { @class = "row" }))
+                        @using (Html.BeginForm("Mesailer", "Admin", FormMethod.Post, new { @class = "row col-md-5" }))
                         {
 
                             <div class="dropdown col-xs-2">
@@ -60,9 +60,11 @@
 
                             </div>
 
-                            <div class="col-md-2">
-                                <button name="listele" type="submit" class="btn btn-primary btn-flat">Listele</button>
-                                <button name="excel" type="submit" class="btn btn-primary btn-flat">Excel Aktar</button>
+                            <div class="col-md-3">
+                                <button name="listele" type="submit" class="btn btn-primary btn-flat">Listele</button>                                
+                            </div>
+                            <div class="col-xs-8">
+                                <button  name="excel" type="submit" class="btn btn-success btn-block btn-flat">Excel Aktar</button>
                             </div>
 
                         }
@@ -87,6 +89,7 @@
                                     <th scope="col">AY</th>
                                     <th scope="col">GÜN</th>
                                     <th scope="col">SAAT</th>
+                                    <th scope="col"></th>
 
                                 </tr>
                             </thead>
@@ -110,8 +113,6 @@
                                     <th> </th>
                                     <th> </th>
                                     <th class="col-md-2">Toplam = @toplam </th>
-
-                                    <th class="col-md-2"><a class="text-aqua" href="@Url.Action("ExcelAktar","Admin")">Excel Aktar</a></th>
                                 </tr>
                             </tbody>
                         </table>
