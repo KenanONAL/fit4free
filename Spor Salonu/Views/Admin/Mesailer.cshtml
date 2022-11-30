@@ -36,6 +36,7 @@
                                     if(ViewBag.Ay != null) { ay = ViewBag.Ay; }
                                 }
                                 <select name="ay" itemid="ay" class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    OCAK
                                     @for (int j = 1; j <= 12; j++)
                                     {
                                         if (ay == j)
@@ -48,10 +49,10 @@
                                         else
                                         {
 
-                                            <option name="@j" id="@j" class="dropdown-item" value="@j">
-                                                @aylar[j - 1]
+                                        <option name="@j" id="@j" class="dropdown-item" value="@j">
+                                            @aylar[j - 1]
 
-                                            </option>
+                                        </option>
                                         }
 
                                     }
@@ -76,8 +77,8 @@
                             @if (TempData["sonuc"] != null)
                             {
                                 <a class="alert alert-success"><b>@TempData["sonuc"]</b></a>
-                            }
-
+                            }             
+                        
                         </div>
                         <table class="table table-striped text-center" style="top=10px">
                             <thead>
@@ -101,6 +102,8 @@
                                         <td>@mesailer.Saat</td>
                                         <td><a class="text-danger" href=" @Url.Action("MesaiSil", "Admin", new { id = mesailer.Id })"><i class="fa fa-eraser"></i> Sil</a></td>
                                     </tr>
+
+
                                 }
                                 <tr class="text-center">
                                     <th scope="row" "> </th>
@@ -113,19 +116,19 @@
                             </tbody>
                         </table>
                     </div>
+                    </div>
                 </div>
+
             </div>
+            <!-- /.container-fluid -->
+            <!-- Sticky Footer -->
+            <footer class="sticky-footer">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright © FITT4FREE 2019</span>
+                    </div>
+                </div>
+            </footer>
 
         </div>
-        <!-- /.container-fluid -->
-        <!-- Sticky Footer -->
-        <footer class="sticky-footer">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright © FITT4FREE 2019</span>
-                </div>
-            </div>
-        </footer>
-
-    </div>
 
