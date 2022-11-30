@@ -355,7 +355,7 @@ namespace Spor_Salonu.Controllers
 
         public ActionResult Mesailer()
         {
-            List<Mesailer> mesailer = db.Mesailer.OrderByDescending(c => c.Ay).ToList();
+            List<Mesailer> mesailer = db.Mesailer.Where(c=>c.Ay==DateTime.Now.Month).OrderByDescending(c => c.Ay).ToList();
 
             return View(mesailer);
             //if (Session["admin"] != null)
@@ -474,35 +474,50 @@ namespace Spor_Salonu.Controllers
             }
         }
 
+        public void VerileriSil()
+        {
+            if (Session["admin"] != null)
+            {
+                //Verileri Silme Kodları
+                TempData["sonuc"] = "Veriler Başarılı Şekilde Silindi";
+                Response.Redirect(Url.Action("Mesailer", "Admin"));
+            }
+            else
+            {
+                new RedirectResult(@"~\Home\AdminGiris");
+            }
+        }
+
         public void ExcelAktar()
         {
-            
-            
-            //var mesailer = db.Mesailer.Where(c=>c.Ay==).OrderByDescending(c => c.Ay).ToList(); ;
+
+
+            //var mesailer = db.Mesailer.Where(c => c.Ay ==).OrderByDescending(c => c.Ay).ToList(); ;
             //string strFileName = @"C:\Users\konal\Desktop\mesai.xlsx";
-            //FileInfo fileInfo=new FileInfo(strFileName);
-            
-            //    using (ExcelPackage excelPackage = new ExcelPackage(fileInfo))
-            //    {
+            //FileInfo fileInfo = new FileInfo(strFileName);
+
+            //using (ExcelPackage excelPackage = new ExcelPackage(fileInfo))
+            //{
 
             //    ExcelPackage.LicenseContext = LicenseContext.Commercial;
             //    ExcelWorksheet namedWorksheet = excelPackage.Workbook.Worksheets["mesai"];
 
-            //    for(int i=3;i<=33;i++)
+            //    for (int i = 3; i <= 33; i++)
             //    {
-            //        namedWorksheet.Cells[6, Convert.ToInt32(i)].Value ="";
+            //        namedWorksheet.Cells[6, Convert.ToInt32(i)].Value = "";
             //    }
 
             //    foreach (var item in mesailer)
             //    {
-            //        namedWorksheet.Cells[6,Convert.ToInt32(item.Gun+2)].Value = item.Saat;
+            //        namedWorksheet.Cells[6, Convert.ToInt32(item.Gun + 2)].Value = item.Saat;
             //    }
-            //        excelPackage.SaveAs(fileInfo);
-            //        excelPackage.Dispose();
-            //    }
+            //    excelPackage.SaveAs(fileInfo);
+            //    excelPackage.Dispose();
+            //}
             //Process.Start(new ProcessStartInfo { FileName = strFileName, UseShellExecute = true });
             //Response.Redirect(Url.Action("Mesailer", "Admin"));
         }
+
 
     }
 }
