@@ -1,7 +1,18 @@
 {
-  "data":[
-  {"Id":1,"Saat":4,"Gun":15,"Ay":3,"Aciklama":"Sincan Destek"},
-  {"Id":2,"Saat":5,"Gun":25,"Ay":3,"Aciklama":"Sincan Destek"},
-  {"Id":3,"Saat":4,"Gun":35,"Ay":3,"Aciklama":"Sincan Destek"}
-  ] 
+  "data": [
+    {
+      "Id": 28,
+      "GUN": 4,
+      "SAAT": 5,
+      "AY": 2,
+      "Aciklama": "Sincan Destek                                     "
+    },
+    {
+      "Id": 29,
+      "GUN": 11,
+      "SAAT": 5,
+      "AY": 2,
+      "Aciklama": "Sincan Destek                                     "
+    }
+  ]
 }
